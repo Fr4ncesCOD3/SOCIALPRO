@@ -87,7 +87,7 @@ npm run dev
 
 ## 📊 Demo
 
-Prova la demo live di SOCIALPRO: [https://socialpro-demo.example.com](https://socialpro-demo.example.com)
+Prova la demo live di SOCIALPRO: [https://socialpro-ivory.vercel.app/](https://socialpro-ivory.vercel.app/)
 
 Accedi con  credenziali demo:
 - **Email**: [demomail]
@@ -132,6 +132,6 @@ Questo progetto è rilasciato sotto licenza MIT. Per maggiori dettagli, consulta
 
 <div align="center">
   
-© 2025 SOCIALPRO - FSdev • [Website](https://socialpro.example.com) • [Documentazione](https://github.com/Fr4ncesCOD3/SOCIALPRO)
+© 2025 SOCIALPRO - FSdev • [Website](https://socialpro-ivory.vercel.app/) • [Documentazione](https://github.com/Fr4ncesCOD3/SOCIALPRO)
 
 </div>
