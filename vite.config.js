@@ -1,20 +1,26 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { resolve } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   base: './',
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, 'src')
+    }
+  },
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    sourcemap: false,
+    sourcemap: process.env.NODE_ENV !== 'production',
     minify: 'terser',
     emptyOutDir: true,
     terserOptions: {
       compress: {
-        drop_console: true,
-        drop_debugger: true
+        drop_console: process.env.NODE_ENV === 'production',
+        drop_debugger: process.env.NODE_ENV === 'production'
       }
     },
     rollupOptions: {
@@ -28,9 +34,6 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ['chart.js', 'react-chartjs-2']
-  },
-  resolve: {
-    dedupe: ['chart.js', 'react', 'react-dom']
   },
   server: {
     port: 3000,
