@@ -1,0 +1,23 @@
+# Immagine da usare
+image:
+  file: .gitpod.Dockerfile
+
+# Porte da esporre
+ports:
+  - port: 3000
+    onOpen: open-preview
+    name: Web App
+    description: Applicazione SocialPro
+
+# Attività da eseguire all'avvio
+tasks:
+  - init: npm install
+    command: npm run dev
+
+# Estensioni VS Code da preinstallare
+vscode:
+  extensions:
+    - dbaeumer.vscode-eslint
+    - esbenp.prettier-vscode
+    - bradlc.vscode-tailwindcss
+    - dsznajder.es7-react-js-snippets 

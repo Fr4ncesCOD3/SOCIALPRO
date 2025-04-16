@@ -1,0 +1,315 @@
+{
+  "header": {
+    "startNow": "Inizia Ora",
+    "discoverServices": "Scopri i Servizi",
+    "animatedSlogans": {
+      "line1": "Migliora la Tua Presenza Digitale",
+      "line2": "Potenzia il Tuo Engagement Online",
+      "line3": "Massimizza il Tuo Impatto Social",
+      "line4": "Trasforma la Strategia del Tuo Brand",
+      "line5": "Amplifica la Tua Portata",
+      "line6": "Rivoluziona i Tuoi Social Media"
+    }
+  },
+  "navbar": {
+    "login": "Accedi",
+    "logout": "Esci",
+    "dashboard": "Dashboard",
+    "home": "Home",
+    "services": "Servizi",
+    "simulator": "Simulatore",
+    "testimonials": "Testimonianze",
+    "pricing": "Prezzi",
+    "blog": "Blog",
+    "contact": "Contatti"
+  },
+  "auth": {
+    "login": "Accedi",
+    "register": "Registrati",
+    "email": "Email",
+    "password": "Password",
+    "name": "Nome",
+    "forgotPassword": "Password dimenticata?",
+    "noAccount": "Non hai un account?",
+    "alreadyAccount": "Hai già un account?",
+    "signUp": "Registrati",
+    "signIn": "Accedi"
+  },
+  "marketing": {
+    "services": {
+      "title": "I Nostri Servizi",
+      "subtitle": "Soluzioni complete per la tua strategia social media",
+      "filters": {
+        "allServices": "Tutti i Servizi",
+        "analytics": "Analisi",
+        "content": "Contenuti",
+        "advertising": "Pubblicità",
+        "automation": "Automazione"
+      },
+      "cards": {
+        "analysis": {
+          "title": "Analisi Social Media",
+          "description": "Ottieni insight dettagliati sulle tue performance social con i nostri strumenti di analisi avanzata.",
+          "details": "Il nostro servizio di analisi dei social media fornisce report completi su tassi di engagement, demografia del pubblico e performance dei contenuti. Utilizziamo l'intelligenza artificiale all'avanguardia per identificare tendenze e opportunità di crescita.",
+          "features": [
+            "Monitoraggio delle performance in tempo reale",
+            "Analisi della concorrenza",
+            "Analisi del sentiment",
+            "Raccomandazioni per l'ottimizzazione dei contenuti",
+            "Dashboard di reportistica personalizzate"
+          ]
+        },
+        "contentStrategy": {
+          "title": "Strategia di Contenuti",
+          "description": "Sviluppiamo strategie di contenuto personalizzate per massimizzare l'engagement sui social media.",
+          "details": "La nostra strategia di contenuti è progettata per aumentare la visibilità del tuo brand e generare interazioni significative. Creiamo piani editoriali completi basati su dati analitici e tendenze del settore per garantire che ogni post raggiunga il suo massimo potenziale.",
+          "features": [
+            "Pianificazione editoriale avanzata",
+            "Creazione di contenuti originali",
+            "Ottimizzazione specifica per piattaforma",
+            "Storytelling strategico",
+            "Calendario contenuti interattivo"
+          ]
+        },
+        "communityManagement": {
+          "title": "Gestione della Community",
+          "description": "Costruisci e gestisci una community attiva e coinvolta attorno al tuo brand.",
+          "details": "Il nostro servizio di gestione della community si concentra sulla creazione di relazioni autentiche con il tuo pubblico. Gestiamo le interazioni quotidiane, rispondiamo a commenti e domande, e implementiamo strategie per aumentare la fedeltà degli utenti e trasformarli in ambasciatori del brand.",
+          "features": [
+            "Gestione delle conversazioni in tempo reale",
+            "Monitoraggio delle menzioni",
+            "Moderazione dei commenti",
+            "Programmi di fidelizzazione",
+            "Gestione delle crisi di comunicazione"
+          ]
+        },
+        "growthHacking": {
+          "title": "Growth Hacking",
+          "description": "Accelera la crescita della tua presenza social con tecniche innovative basate sui dati.",
+          "details": "Il nostro approccio al growth hacking combina creatività, analisi dei dati e automazione per ottenere una crescita rapida e sostenibile. Utilizziamo metodologie agili per testare diverse strategie, ottimizzare quelle più efficaci e scalare i risultati su tutte le piattaforme social.",
+          "features": [
+            "A/B testing di contenuti e strategie",
+            "Analisi predittiva delle tendenze",
+            "Strategie di viralizzazione",
+            "Ottimizzazione del tasso di conversione",
+            "Integrazione con automazione marketing"
+          ]
+        },
+        "socialAutomation": {
+          "title": "Automazione Social",
+          "description": "Automatizza i processi ripetitivi e concentrati sulla strategia creativa.",
+          "details": "La nostra soluzione di automazione social ti fa risparmiare tempo prezioso automatizzando attività ripetitive come la pianificazione dei post, le risposte standard e il monitoraggio. Utilizziamo strumenti avanzati e flussi di lavoro personalizzati per mantenere una presenza costante sui social media senza sacrificare l'autenticità.",
+          "features": [
+            "Pianificazione multi-piattaforma",
+            "Risposte automatiche intelligenti",
+            "Flussi di lavoro personalizzati",
+            "Monitoraggio automatizzato",
+            "Reportistica programmata"
+          ]
+        },
+        "globalBrand": {
+          "title": "Presenza Globale del Brand",
+          "description": "Espandi la presenza del tuo brand a livello internazionale con strategie localizzate.",
+          "details": "Il nostro servizio di presenza globale del brand ti aiuta a raggiungere un pubblico internazionale mantenendo la coerenza del tuo brand. Creiamo strategie multilingue e multiculturali che rispettano le specificità locali mantenendo l'identità globale del tuo brand.",
+          "features": [
+            "Strategie multilingue",
+            "Localizzazione dei contenuti",
+            "Analisi di mercati specifici",
+            "Gestione di account regionali",
+            "Campagne geo-targetizzate"
+          ]
+        },
+        "advertising": {
+          "title": "Pubblicità Social",
+          "description": "Ottimizza il tuo ROI con campagne pubblicitarie social mirate e basate sui dati.",
+          "details": "Il nostro team di esperti di pubblicità social crea e ottimizza campagne che massimizzano il ritorno sull'investimento. Utilizziamo targeting avanzato, creatività coinvolgenti e test continui per garantire che ogni euro speso generi risultati tangibili per la tua attività.",
+          "features": [
+            "Strategia pubblicitaria personalizzata",
+            "Targeting demografico e comportamentale",
+            "Creatività ad alto impatto",
+            "Ottimizzazione continua delle campagne",
+            "Analisi dettagliata del ROI"
+          ]
+        },
+        "contentProduction": {
+          "title": "Produzione di Contenuti",
+          "description": "Produciamo contenuti visivi e testuali di alta qualità ottimizzati per ogni piattaforma.",
+          "details": "Il nostro servizio di produzione di contenuti gestisce la creazione di contenuti professionali per tutte le piattaforme social. Dal copywriting alla grafica, dai video alle animazioni, ogni elemento è specificamente progettato per massimizzare l'engagement sulla piattaforma di destinazione.",
+          "features": [
+            "Produzione video professionale",
+            "Design grafico per social",
+            "Copywriting strategico",
+            "Ottimizzazione specifica per formato",
+            "Contenuti interattivi e immersivi"
+          ]
+        },
+        "influencerMarketing": {
+          "title": "Influencer Marketing",
+          "description": "Collabora con influencer selezionati strategicamente per amplificare il tuo messaggio.",
+          "details": "Il nostro servizio di influencer marketing identifica e gestisce collaborazioni con creator che si allineano perfettamente ai valori del tuo brand. Sviluppiamo campagne autentiche che sfruttano la credibilità degli influencer per aumentare la visibilità e la fiducia nel tuo brand.",
+          "features": [
+            "Selezione strategica degli influencer",
+            "Gestione delle collaborazioni",
+            "Sviluppo di brief creativi",
+            "Monitoraggio delle performance",
+            "Analisi dell'impatto sul brand"
+          ]
+        }
+      },
+      "detailsToggle": {
+        "show": "Mostra dettagli",
+        "hide": "Nascondi dettagli"
+      },
+      "chartTitle": "Miglioramento delle Performance",
+      "chartSubtitle": "Risultati medi basati sui dati degli ultimi 6 mesi",
+      "cta": {
+        "quote": "Richiedi Preventivo",
+        "learnMore": "Scopri di Più"
+      }
+    },
+    "simulator": {
+      "title": "Simulatore di Engagement",
+      "subtitle": "Misura, analizza e ottimizza le tue performance sui social media",
+      "header": "Analizzatore AI di Engagement",
+      "startAnalysis": "Inizia analisi",
+      "platformSelection": "Seleziona la tua piattaforma",
+      "metricsSection": "Inserisci le tue metriche",
+      "metrics": {
+        "followers": "Follower",
+        "postsPerMonth": "Numero di post nell'ultimo mese",
+        "avgLikes": "Media Like per Post",
+        "avgComments": "Media Commenti per Post",
+        "avgShares": "Media Condivisioni per Post",
+        "avgSaves": "Media Salvataggi per Post"
+      },
+      "advancedOptions": {
+        "show": "Mostra opzioni avanzate",
+        "hide": "Nascondi opzioni avanzate",
+        "importance": {
+          "title": "Perché è importante?",
+          "description": "Condivisioni e salvataggi sono indicatori di engagement di alta qualità. Secondo ricerche recenti, questi segnali hanno un peso maggiore negli algoritmi di {platform} e possono influenzare significativamente la visibilità organica dei tuoi contenuti."
+        }
+      },
+      "calculateButton": "Calcola Tasso di Engagement",
+      "calculating": "Analisi in corso...",
+      "resetButton": "Reimposta valori",
+      "results": {
+        "title": "Risultato dell'Analisi",
+        "benchmarkTitle": "Confronto con benchmark {platform}",
+        "quality": {
+          "veryLow": "Tasso di engagement molto basso",
+          "low": "Tasso di engagement basso",
+          "average": "Tasso di engagement nella media",
+          "good": "Tasso di engagement sopra la media",
+          "excellent": "Tasso di engagement eccellente",
+          "default": "Tasso di engagement da valutare"
+        },
+        "advice": {
+          "veryLow": {
+            "general": "Il tuo tasso di engagement è significativamente al di sotto della media del settore. È il momento di rivedere completamente la tua strategia social.",
+            "actions": [
+              "Analizza quando il tuo pubblico è più attivo e pubblica in quei momenti",
+              "Poni domande dirette nei tuoi post per stimolare le interazioni",
+              "Rivedi il tono di comunicazione per renderlo più coinvolgente",
+              "Considera l'utilizzo di contenuti interattivi come sondaggi e quiz"
+            ]
+          },
+          "low": {
+            "general": "Il tuo tasso di engagement è sotto la media. C'è un buon margine di miglioramento con alcuni aggiustamenti strategici.",
+            "actions": [
+              "Sperimenta diversi formati di contenuto per vedere cosa risuona meglio",
+              "Aumenta la frequenza delle risposte ai commenti dei follower",
+              "Utilizza call-to-action più forti nei tuoi post",
+              "Implementa una strategia di hashtag più mirata e pertinente"
+            ]
+          },
+          "average": {
+            "general": "Il tuo tasso di engagement è in linea con la media del settore. Stai facendo un buon lavoro, ma c'è spazio per ulteriori miglioramenti.",
+            "actions": [
+              "Identifica i tuoi post con le migliori performance e crea più contenuti simili",
+              "Coinvolgi attivamente i tuoi follower più fedeli attraverso menzioni e risposte",
+              "Sperimenta orari di pubblicazione alternativi",
+              "Considera collaborazioni con altri creator o brand"
+            ]
+          },
+          "good": {
+            "general": "Ottimo lavoro! Il tuo tasso di engagement è sopra la media. La tua strategia sta funzionando bene.",
+            "actions": [
+              "Analizza approfonditamente i contenuti con le migliori performance per replicarne il successo",
+              "Considera di aumentare la frequenza di pubblicazione mantenendo la qualità",
+              "Sfrutta UGC (Contenuti Generati dagli Utenti) per diversificare i contenuti",
+              "Implementa test A/B regolari per ulteriore ottimizzazione"
+            ]
+          },
+          "excellent": {
+            "general": "Fantastico! Il tuo tasso di engagement è tra i migliori del settore. Continua con questa strategia vincente.",
+            "actions": [
+              "Documenta la tua attuale strategia per mantenere la coerenza",
+              "Considera di creare contenuti premium o esclusivi per il tuo pubblico",
+              "Esplora opportunità di monetizzazione come partnership con brand",
+              "Condividi parte della tua esperienza creando meta-contenuti sul tuo successo"
+            ]
+          },
+          "default": {
+            "general": "Abbiamo calcolato il tuo tasso di engagement. Ecco alcuni suggerimenti generali.",
+            "actions": [
+              "Monitora regolarmente le tue metriche di engagement",
+              "Rispondi attivamente ai commenti dei follower",
+              "Sperimenta diversi tipi di contenuto",
+              "Pubblica con costanza"
+            ]
+          }
+        },
+        "platformSpecific": {
+          "instagram": "Su Instagram, i Reels ottengono il 22% in più di engagement rispetto ad altri formati. Integrali nella tua strategia.",
+          "facebook": "Su Facebook, i contenuti video ottengono il 135% in più di reach organica rispetto ai post con solo immagini.",
+          "tiktok": "Su TikTok, l'utilizzo di audio di tendenza può aumentare l'engagement fino al 30%. Monitora regolarmente i trend audio.",
+          "linkedin": "Su LinkedIn, i post con dati originali e insight di settore ottengono il 45% in più di engagement.",
+          "twitter": "Su Twitter, i tweet con video ricevono 10 volte più engagement rispetto a quelli senza elementi multimediali.",
+          "default": "Personalizza la tua strategia in base alle caratteristiche uniche della piattaforma."
+        },
+        "actionsTitle": "Azioni consigliate:",
+        "consultationButton": "Richiedi consulenza personalizzata",
+        "consultationSubtext": "Ottieni un'analisi dettagliata e una strategia su misura dal nostro team"
+      }
+    },
+    "testimonials": {
+      "title": "Storie di Successo",
+      "subtitle": "Scopri cosa dicono i nostri clienti",
+      "cta": "Leggi Altre Recensioni"
+    },
+    "pricing": {
+      "title": "Piani di Investimento",
+      "subtitle": "Scegli il piano giusto per la tua attività",
+      "starterTitle": "Base",
+      "starterPrice": "€99/mese",
+      "proTitle": "Professionale",
+      "proPrice": "€249/mese",
+      "enterpriseTitle": "Enterprise",
+      "enterprisePrice": "Personalizzato",
+      "cta": "Inizia Ora",
+      "contactCta": "Contattaci per Dettagli"
+    },
+    "blog": {
+      "title": "Ultimi Insights",
+      "subtitle": "Consigli e tendenze nel social media marketing",
+      "readMore": "Leggi di Più",
+      "viewAll": "Visualizza Tutti gli Articoli"
+    },
+    "caseStudies": {
+      "title": "Case Study",
+      "subtitle": "Risultati reali dai nostri clienti",
+      "resultsLabel": "Risultati Ottenuti",
+      "industryLabel": "Settore",
+      "platformLabel": "Piattaforme",
+      "timeframeLabel": "Periodo",
+      "viewCta": "Visualizza Case Study Completo" 
+    }
+  },
+  "footer": {
+    "contactUs": "Contattaci",
+    "followUs": "Seguici",
+    "companyAddress": "Via Tecnologica 123, Città Digitale",
+    "copyright": "© 2025 SocialPro. Tutti i diritti riservati."
+  }
+} 

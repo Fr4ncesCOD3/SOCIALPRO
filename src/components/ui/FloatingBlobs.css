@@ -1,0 +1,328 @@
+/* Contenitore principale per i blob fluttuanti */
+.floating-blobs-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+  contain: content;
+  content-visibility: auto;
+  view-transition-name: blobs-container;
+  filter: url(#goo);
+  
+  /* Proprietà personalizzate per ottimizzazione */
+  --transition-timing: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --reduced-opacity: 0.8;
+}
+
+.floating-blobs-container.loaded {
+  opacity: 1;
+}
+
+.floating-blobs-container[data-mobile="true"] {
+  filter: url('#goo-mobile');
+}
+
+.floating-blobs-container[data-mobile="false"] {
+  filter: url('#goo');
+}
+
+/* Stile per il singolo blob */
+.floating-blob {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  will-change: transform, border-radius, opacity;
+  transform: translateZ(0);
+  transition: filter 0.3s ease-out;
+  animation:
+    floatBlob var(--float-duration, 30s) infinite var(--transition-timing),
+    morphBlob var(--morph-duration, 12s) infinite var(--transition-timing),
+    opacityPulse var(--pulse-duration, 15s) infinite var(--transition-timing),
+    splitMergeBlob var(--split-merge-duration, 25s) infinite var(--transition-timing);
+  animation-play-state: var(--animation-enabled, running);
+  animation-direction: alternate;
+  /* Proprietà ottimizzate per performance */
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  backface-visibility: hidden;
+  opacity: var(--min-opacity, 0.3);
+}
+
+/* Animazione per il movimento fluttuante naturale */
+@keyframes floatBlob {
+  0% {
+    transform: translate(calc(var(--direction-x, 1) * -15%), calc(var(--direction-y, 1) * -10%)) rotate(0deg) scale(1);
+  }
+  20% {
+    transform: translate(calc(var(--direction-x, 1) * 5%), calc(var(--direction-y, 1) * 15%)) rotate(72deg) scale(1.05);
+  }
+  40% {
+    transform: translate(calc(var(--direction-x, 1) * -10%), calc(var(--direction-y, 1) * 5%)) rotate(144deg) scale(0.95);
+  }
+  60% {
+    transform: translate(calc(var(--direction-x, 1) * 15%), calc(var(--direction-y, 1) * -5%)) rotate(216deg) scale(1.1);
+  }
+  80% {
+    transform: translate(calc(var(--direction-x, 1) * 5%), calc(var(--direction-y, 1) * -15%)) rotate(288deg) scale(0.9);
+  }
+  100% {
+    transform: translate(calc(var(--direction-x, 1) * -15%), calc(var(--direction-y, 1) * -10%)) rotate(360deg) scale(1);
+  }
+}
+
+/* Animazione per lo morphing del bordo */
+@keyframes morphBlob {
+  0% {
+    border-radius: 50%;
+  }
+  25% {
+    border-radius: 62% 38% 65% 35% / 45% 66% 34% 55%;
+  }
+  50% {
+    border-radius: 43% 57% 29% 71% / 68% 31% 69% 32%;
+  }
+  75% {
+    border-radius: 55% 45% 72% 28% / 37% 54% 46% 63%;
+  }
+  100% {
+    border-radius: 40% 60% 58% 42% / 52% 47% 53% 48%;
+  }
+}
+
+/* Animazione per la pulsazione dell'opacità */
+@keyframes opacityPulse {
+  0%, 100% {
+    opacity: var(--min-opacity, 0.3);
+  }
+  50% {
+    opacity: var(--max-opacity, 0.7);
+  }
+}
+
+/* Animazione avanzata per l'effetto di split e merge */
+@keyframes splitMergeBlob {
+  0%, 100% {
+    clip-path: circle(50% at 50% 50%);
+    transform: scale(1) translate(0, 0);
+  }
+  25% {
+    clip-path: ellipse(25% 50% at 50% 50%);
+    transform: scale(1.1) translate(calc(var(--direction-x, 1) * 5%), calc(var(--direction-y, 1) * 5%));
+  }
+  50% {
+    clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    transform: scale(0.9) translate(calc(var(--direction-x, 1) * -5%), calc(var(--direction-y, 1) * -5%));
+  }
+  75% {
+    clip-path: ellipse(50% 25% at 50% 50%);
+    transform: scale(1.2) translate(calc(var(--direction-x, 1) * 10%), calc(var(--direction-y, 1) * 10%));
+  }
+}
+
+/* Ritardo specifico per ogni blob per effetto sfalsato */
+.floating-blob:nth-child(1) { animation-delay: 0s; }
+.floating-blob:nth-child(2) { animation-delay: 2s; }
+.floating-blob:nth-child(3) { animation-delay: 4s; }
+.floating-blob:nth-child(4) { animation-delay: 6s; }
+.floating-blob:nth-child(5) { animation-delay: 8s; }
+.floating-blob:nth-child(6) { animation-delay: 10s; }
+.floating-blob:nth-child(7) { animation-delay: 12s; }
+.floating-blob:nth-child(8) { animation-delay: 14s; }
+.floating-blob:nth-child(9) { animation-delay: 16s; }
+.floating-blob:nth-child(10) { animation-delay: 18s; }
+
+/* Ottimizzazioni per dispositivi mobili */
+@media (max-width: 768px) {
+  .floating-blobs-container {
+    filter: url(#goo-mobile);
+  }
+  
+  .floating-blob {
+    animation-duration: 
+      calc(var(--float-duration, 30s) * 0.8), 
+      calc(var(--morph-duration, 12s) * 0.8), 
+      calc(var(--pulse-duration, 15s) * 0.8), 
+      calc(var(--split-merge-duration, 25s) * 0.8);
+  }
+}
+
+/* Ottimizzazioni per dispositivi a basse prestazioni */
+[data-performance="low"] .floating-blob {
+  animation-duration: 
+    calc(var(--float-duration, 30s) * 1.5), 
+    calc(var(--morph-duration, 12s) * 1.5), 
+    var(--pulse-duration, 15s), 
+    calc(var(--split-merge-duration, 25s) * 1.5);
+  animation-name: 
+    floatBlob,
+    morphBlob,
+    opacityPulse,
+    none;
+}
+
+/* Supporto per preferenze ridotte movimento */
+@media (prefers-reduced-motion: reduce) {
+  .floating-blob {
+    animation-name: opacityPulse;
+    transition: none;
+    animation-duration: 20s;
+  }
+}
+
+/* Supporto per temi scuri */
+@media (prefers-color-scheme: dark) {
+  .floating-blob {
+    mix-blend-mode: plus-lighter;
+    opacity: calc(var(--min-opacity, 0.3) * 1.2);
+  }
+}
+
+/* Ottimizzazioni per dispositivi con risparmio dati */
+@media (prefers-reduced-data: reduce) {
+  .floating-blob {
+    filter: blur(30px);
+    opacity: 0.3;
+  }
+
+  .floating-blobs-container {
+    filter: none;
+  }
+}
+
+/* Ottimizzazioni per schermi ad alta risoluzione */
+@media (min-resolution: 2dppx) {
+  .floating-blob {
+    animation: 
+      floatBlob 50s infinite cubic-bezier(0.45, 0.05, 0.55, 0.95),
+      morphBlob 30s infinite cubic-bezier(0.45, 0.05, 0.55, 0.95) alternate,
+      opacityPulse 25s infinite cubic-bezier(0.45, 0.05, 0.55, 0.95) alternate,
+      splitMergeBlob 70s infinite cubic-bezier(0.76, 0.05, 0.24, 0.95) alternate;
+  }
+}
+
+/* Supporto per dispositivi più vecchi che potrebbero non gestire bene il blur */
+@supports not (filter: blur(40px)) {
+  .floating-blob {
+    opacity: 0.25;
+    filter: none;
+  }
+  
+  .floating-blobs-container {
+    filter: none;
+  }
+}
+
+/* Aggiunta di supporto avanzato per l'API View Transitions */
+@supports (view-transition-name: floating-blob) {
+  .floating-blob {
+    view-transition-name: floating-blob;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  ::view-transition-old(floating-blob),
+  ::view-transition-new(floating-blob) {
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.76, 0.05, 0.24, 0.95);
+  }
+}
+
+/* Effetto di fusione tra i blob quando si sovrappongono con metaball migliorato */
+.floating-blobs-container .floating-blob:nth-child(even) {
+  mix-blend-mode: screen;
+  transform: translate3d(0, 0, 0);
+  filter: blur(10px) contrast(120%);
+}
+
+.floating-blobs-container .floating-blob:nth-child(odd) {
+  mix-blend-mode: lighten;
+  transform: translate3d(0, 0, 0);
+  filter: blur(10px) brightness(110%);
+}
+
+/* Content-visibility per ottimizzare il rendering */
+@supports (content-visibility: auto) {
+  .floating-blobs-container {
+    content-visibility: auto;
+    contain-intrinsic-size: 100vh;
+  }
+}
+
+/* Effetto metaball migliorato con filtri avanzati */
+.metaball-effect {
+  filter: contrast(170%) brightness(120%) blur(8px);
+  mix-blend-mode: plus-lighter;
+  will-change: filter;
+}
+
+/* Ottimizzazioni moderne per prestazioni LCP e INP */
+@media (pointer: fine) {
+  .floating-blob {
+    transition: transform 0.1s linear;
+    animation-timeline: scroll(self);
+    animation-range: entry 10% exit 80%;
+  }
+}
+
+/* Ottimizzazione per viewport inattivi */
+.header-container:not(:focus-within) .floating-blob {
+  animation-play-state: paused;
+}
+
+/* Supporto per animazioni passive per browser moderni */
+@supports (animation-timeline: scroll()) {
+  .floating-blob {
+    animation-timeline: auto;
+    animation-range: entry;
+    scroll-timeline: --blobTimeline block;
+  }
+}
+
+/* Animazioni ottimizzate per CPU/GPU con bilanciamento del carico */
+@supports (contain: paint) {
+  .floating-blob {
+    contain: paint;
+    paint-order: normal;
+    transition: containment timeline auto;
+  }
+}
+
+/* Ottimizzazione del compositing con FLIP animations */
+.header-container.loaded .floating-blob {
+  will-change: auto;
+  transition: will-change 0.5s;
+  animation-composition: add;
+}
+
+/* Ottimizzazioni per modalità con risparmio energetico */
+@media (prefers-reduced-transparency: reduce) {
+  .floating-blob {
+    opacity: 0.4 !important;
+    filter: blur(15px);
+  }
+  
+  .floating-blobs-container {
+    filter: none !important;
+  }
+}
+
+/* Supporto per animazioni con SharedArrayBuffer per thread separati */
+@supports (animation-timeline: shared) {
+  .floating-blob {
+    animation-timeline: --sharedTimeline;
+  }
+}
+
+/* Ottimizzazione per INP (Interaction to Next Paint) */
+.floating-blob {
+  overscroll-behavior: none;
+  touch-action: none;
+  translate: 0 0;
+  scale: 1;
+  rotate: 0deg;
+} 

@@ -1,0 +1,433 @@
+/* src/components/Header.css */
+.blobs {
+  filter: url(#goo);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  contain: strict; /* Ottimizzazione di contenimento per layout, paint e size */
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  will-change: transform;
+  transform: translateZ(0); /* Forza l'accelerazione hardware */
+  backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000px;
+}
+
+.cursor-blob {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(20px);
+  -webkit-backface-visibility: hidden;
+  z-index: -1;
+}
+
+.blob:not(.cursor-blob) {
+  opacity: 0.7;
+  animation: blobAnimation 20s infinite alternate;
+  contain: layout style; /* Ottimizzazione compositing */
+}
+
+/* Contenitore per l'effetto metaball */
+.metaballs-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  filter: url(#goo);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.metaball {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.8;
+  will-change: transform, border-radius, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  mix-blend-mode: screen;
+  filter: blur(40px);
+}
+
+.metaball-1 {
+  width: 400px;
+  height: 400px;
+  left: -5%;
+  top: 10%;
+  animation: metaballMove1 70s infinite alternate ease-in-out;
+  animation-delay: -5s;
+}
+
+.metaball-2 {
+  width: 350px;
+  height: 350px;
+  right: -10%;
+  top: 60%;
+  animation: metaballMove2 65s infinite alternate-reverse ease-in-out;
+  animation-delay: -15s;
+}
+
+.metaball-3 {
+  width: 300px;
+  height: 300px;
+  left: 40%;
+  top: 80%;
+  animation: metaballMove3 60s infinite alternate ease-in-out;
+  animation-delay: -25s;
+}
+
+.metaball-4 {
+  width: 280px;
+  height: 280px;
+  right: 35%;
+  top: 20%;
+  animation: metaballMove4 55s infinite alternate-reverse ease-in-out;
+  animation-delay: -35s;
+}
+
+/* Keyframes per movimento attraverso tutto lo spazio per metaball 1 */
+@keyframes metaballMove1 {
+  0% {
+    transform: translate(0%, 0%) scale(0.9);
+    border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
+    opacity: 0.7;
+  }
+  20% {
+    transform: translate(80%, 20%) scale(1.05);
+    border-radius: 60% 40% 40% 60% / 50% 60% 40% 50%;
+    opacity: 0.9;
+  }
+  40% {
+    transform: translate(100%, 60%) scale(1.1);
+    border-radius: 40% 60% 70% 30% / 70% 30% 50% 60%;
+    opacity: 0.8;
+  }
+  60% {
+    transform: translate(40%, 100%) scale(1);
+    border-radius: 60% 40% 30% 70% / 40% 60% 70% 30%;
+    opacity: 0.7;
+  }
+  80% {
+    transform: translate(-10%, 50%) scale(0.95);
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(0%, 0%) scale(0.9);
+    border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
+    opacity: 0.7;
+  }
+}
+
+/* Keyframes per movimento attraverso tutto lo spazio per metaball 2 */
+@keyframes metaballMove2 {
+  0% {
+    transform: translate(0%, 0%) scale(0.9);
+    border-radius: 60% 40% 40% 60% / 40% 60% 40% 60%;
+    opacity: 0.8;
+  }
+  20% {
+    transform: translate(-60%, -10%) scale(1.1);
+    border-radius: 40% 60% 70% 30% / 30% 70% 50% 60%;
+    opacity: 0.9;
+  }
+  40% {
+    transform: translate(-100%, -40%) scale(1);
+    border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
+    opacity: 0.7;
+  }
+  60% {
+    transform: translate(-50%, -70%) scale(0.95);
+    border-radius: 30% 70% 60% 40% / 50% 50% 40% 60%;
+    opacity: 0.8;
+  }
+  80% {
+    transform: translate(10%, -30%) scale(1.05);
+    border-radius: 50% 50% 70% 30% / 40% 60% 50% 50%;
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(0%, 0%) scale(0.9);
+    border-radius: 60% 40% 40% 60% / 40% 60% 40% 60%;
+    opacity: 0.8;
+  }
+}
+
+/* Keyframes per movimento attraverso tutto lo spazio per metaball 3 */
+@keyframes metaballMove3 {
+  0% {
+    transform: translate(0%, 0%) scale(1);
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    opacity: 0.7;
+  }
+  20% {
+    transform: translate(40%, -80%) scale(0.9);
+    border-radius: 70% 30% 40% 60% / 30% 70% 60% 40%;
+    opacity: 0.8;
+  }
+  40% {
+    transform: translate(70%, -20%) scale(1.1);
+    border-radius: 30% 70% 60% 40% / 60% 40% 30% 70%;
+    opacity: 0.9;
+  }
+  60% {
+    transform: translate(30%, 30%) scale(1.05);
+    border-radius: 60% 40% 50% 50% / 40% 60% 40% 60%;
+    opacity: 0.8;
+  }
+  80% {
+    transform: translate(-60%, -10%) scale(0.95);
+    border-radius: 40% 60% 40% 60% / 60% 40% 60% 40%;
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(0%, 0%) scale(1);
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+    opacity: 0.7;
+  }
+}
+
+/* Keyframes per movimento attraverso tutto lo spazio per metaball 4 */
+@keyframes metaballMove4 {
+  0% {
+    transform: translate(0%, 0%) scale(0.95);
+    border-radius: 40% 60% 50% 50% / 50% 50% 60% 40%;
+    opacity: 0.8;
+  }
+  20% {
+    transform: translate(-40%, 60%) scale(1.05);
+    border-radius: 60% 40% 30% 70% / 40% 60% 70% 30%;
+    opacity: 0.9;
+  }
+  40% {
+    transform: translate(-20%, 100%) scale(1);
+    border-radius: 50% 50% 60% 40% / 30% 70% 40% 60%;
+    opacity: 0.7;
+  }
+  60% {
+    transform: translate(40%, 50%) scale(0.9);
+    border-radius: 30% 70% 70% 30% / 60% 40% 50% 50%;
+    opacity: 0.8;
+  }
+  80% {
+    transform: translate(70%, -40%) scale(1.1);
+    border-radius: 70% 30% 40% 60% / 30% 70% 60% 40%;
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(0%, 0%) scale(0.95);
+    border-radius: 40% 60% 50% 50% / 50% 50% 60% 40%;
+    opacity: 0.8;
+  }
+}
+
+/* Aggiungiamo una classe per ridurre le animazioni */
+@media (prefers-reduced-motion: reduce) {
+  .blob:not(.cursor-blob),
+  .metaball {
+    animation-duration: 120s; /* Raddoppiamo la durata per un movimento più lento */
+    animation-timing-function: linear; /* Funzione di timing più semplice */
+    transition: none !important; /* Disabilitiamo le transizioni */
+  }
+}
+
+@keyframes blobAnimation {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    transform: translate3d(5%, 5%, 0) rotate(90deg) scale(1.1);
+  }
+  50% {
+    border-radius: 50% 60% 50% 70% / 40% 40% 60% 50%;
+    transform: translate3d(-5%, 10%, 0) rotate(180deg) scale(0.9);
+  }
+  75% {
+    border-radius: 40% 50% 60% 40% / 70% 30% 50% 60%;
+    transform: translate3d(10%, -5%, 0) rotate(270deg) scale(1.05);
+  }
+}
+
+/* Keyframes per animazioni diverse per ciascun blob fisso */
+@keyframes moveBlob1 {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    border-radius: 45% 55% 55% 45% / 50% 45% 55% 50%;
+  }
+  25% {
+    transform: translate(80px, -50px) scale(1.1) rotate(5deg);
+    border-radius: 60% 40% 55% 45% / 55% 45% 55% 45%;
+  }
+  50% {
+    transform: translate(120px, 70px) scale(1.15) rotate(10deg);
+    border-radius: 35% 65% 60% 40% / 40% 60% 50% 50%;
+  }
+  75% {
+    transform: translate(40px, 120px) scale(1.05) rotate(5deg);
+    border-radius: 55% 45% 40% 60% / 60% 40% 50% 50%;
+  }
+  100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    border-radius: 45% 55% 55% 45% / 50% 45% 55% 50%;
+  }
+}
+
+@keyframes moveBlob2 {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  }
+  25% {
+    transform: translate(-90px, 60px) scale(1.12) rotate(-8deg);
+    border-radius: 60% 40% 65% 35% / 40% 60% 35% 65%;
+  }
+  50% {
+    transform: translate(-150px, -70px) scale(1.2) rotate(-15deg);
+    border-radius: 35% 65% 30% 70% / 60% 40% 70% 30%;
+  }
+  75% {
+    transform: translate(-60px, -110px) scale(1.08) rotate(-8deg);
+    border-radius: 70% 30% 60% 40% / 30% 70% 40% 60%;
+  }
+  100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+  }
+}
+
+/* Stile per i blob fissi e il loro contenitore */
+.fixed-blobs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fixed-blob {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform, border-radius;
+  pointer-events: none;
+}
+
+/* Effetto di fusione migliorato */
+.blobs .fixed-blob:first-child {
+  mix-blend-mode: screen;
+}
+
+.blobs .fixed-blob:last-child {
+  mix-blend-mode: lighten;
+}
+
+.interactive-text {
+  transition: transform 0.3s ease;
+}
+
+.interactive-text:hover {
+  transform: translateY(-2px);
+}
+
+.interactive-button {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.interactive-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+}
+
+/* Ottimizzazione per dispositivi mobili */
+@media (max-width: 768px) {
+  .fixed-blob, .metaball {
+    opacity: 0.5 !important;
+    filter: blur(40px) !important;
+  }
+  
+  .metaball {
+    animation-duration: 100s;
+  }
+}
+
+/* Ottimizzazione per preferenze di riduzione del movimento */
+@media (prefers-reduced-motion: reduce) {
+  .fixed-blob, .metaball {
+    animation-duration: 150s !important;
+    animation-timing-function: linear !important;
+  }
+}
+
+/* Effetto pulse per dare maggiore dinamismo ai blob */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.9;
+  }
+}
+
+/* Classi per il contenitore principale ottimizzato per LCP */
+.header-container {
+  position: relative;
+  background-color: black;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+  touch-action: pan-x pan-y;
+}
+
+.header-container.hidden {
+  opacity: 0;
+}
+
+.header-container.visible {
+  opacity: 1;
+}
+
+.header-container.loaded .floating-blob {
+  will-change: auto;
+}

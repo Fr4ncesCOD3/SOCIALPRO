@@ -1,13 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import { X, BarChart2, TrendingUp, Users } from 'lucide-react'
 import { Chart } from 'react-chartjs-2'
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js'
+import { ChartData, ChartOptions } from 'chart.js'
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend)
+interface User {
+  name: string;
+  email?: string;
+  id?: string | number;
+}
 
-const UserDashboard = ({ user, onClose }) => {
+interface UserDashboardProps {
+  user: User;
+  onClose: () => void;
+}
+
+type AnalyticsDataType = ChartData<'line'> | null;
+
+const UserDashboard: React.FC<UserDashboardProps> = ({ user, onClose }) => {
   const [activeTab, setActiveTab] = useState('overview')
-  const [analyticsData, setAnalyticsData] = useState(null)
+  const [analyticsData, setAnalyticsData] = useState<AnalyticsDataType>(null)
 
   useEffect(() => {
     // Simulated data fetch

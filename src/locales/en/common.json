@@ -1,0 +1,315 @@
+{
+  "header": {
+    "startNow": "Start Now",
+    "discoverServices": "Discover Services",
+    "animatedSlogans": {
+      "line1": "Elevate Your Digital Presence",
+      "line2": "Boost Your Online Engagement",
+      "line3": "Maximize Your Social Impact",
+      "line4": "Transform Your Brand Strategy",
+      "line5": "Amplify Your Reach",
+      "line6": "Revolutionize Your Social Media"
+    }
+  },
+  "navbar": {
+    "login": "Login",
+    "logout": "Logout",
+    "dashboard": "Dashboard",
+    "home": "Home",
+    "services": "Services",
+    "simulator": "Simulator",
+    "testimonials": "Testimonials",
+    "pricing": "Pricing",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "name": "Name",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "alreadyAccount": "Already have an account?",
+    "signUp": "Sign Up",
+    "signIn": "Sign In"
+  },
+  "marketing": {
+    "services": {
+      "title": "Our Services",
+      "subtitle": "Complete solutions for your social media strategy",
+      "filters": {
+        "allServices": "All Services",
+        "analytics": "Analytics",
+        "content": "Content",
+        "advertising": "Advertising",
+        "automation": "Automation"
+      },
+      "cards": {
+        "analysis": {
+          "title": "Social Media Analysis",
+          "description": "Get detailed insights into your social performance with our advanced analytics tools.",
+          "details": "Our social media analysis service provides comprehensive reports on engagement rates, audience demographics, and content performance. We use cutting-edge AI to identify trends and growth opportunities.",
+          "features": [
+            "Real-time performance monitoring",
+            "Competitor analysis",
+            "Sentiment analysis",
+            "Content optimization recommendations",
+            "Custom reporting dashboards"
+          ]
+        },
+        "contentStrategy": {
+          "title": "Content Strategy",
+          "description": "We develop tailored content strategies to maximize social media engagement.",
+          "details": "Our content strategy is designed to increase your brand visibility and generate meaningful interactions. We create comprehensive editorial plans based on analytical data and industry trends to ensure each post reaches its full potential.",
+          "features": [
+            "Advanced editorial planning",
+            "Original content creation",
+            "Platform-specific optimization",
+            "Strategic storytelling",
+            "Interactive content calendar"
+          ]
+        },
+        "communityManagement": {
+          "title": "Community Management",
+          "description": "Build and manage an active, engaged community around your brand.",
+          "details": "Our community management service focuses on creating authentic relationships with your audience. We handle daily interactions, respond to comments and questions, and implement strategies to increase user loyalty and turn them into brand ambassadors.",
+          "features": [
+            "Real-time conversation management",
+            "Mention monitoring",
+            "Comment moderation",
+            "Loyalty programs",
+            "Communication crisis management"
+          ]
+        },
+        "growthHacking": {
+          "title": "Growth Hacking",
+          "description": "Accelerate your social presence growth with innovative data-driven techniques.",
+          "details": "Our approach to growth hacking combines creativity, data analysis, and automation to achieve rapid and sustainable growth. We use agile methodologies to test different strategies, optimize the most effective ones, and scale results across all social platforms.",
+          "features": [
+            "Content and strategy A/B testing",
+            "Predictive trend analysis",
+            "Viralization strategies",
+            "Conversion rate optimization",
+            "Marketing automation integration"
+          ]
+        },
+        "socialAutomation": {
+          "title": "Social Automation",
+          "description": "Automate repetitive processes and focus on creative strategy.",
+          "details": "Our social automation solution saves you valuable time by automating repetitive tasks such as post scheduling, standard responses, and monitoring. We use advanced tools and custom workflows to maintain a consistent social media presence without sacrificing authenticity.",
+          "features": [
+            "Multi-platform scheduling",
+            "Intelligent automated responses",
+            "Custom workflows",
+            "Automated monitoring",
+            "Scheduled reporting"
+          ]
+        },
+        "globalBrand": {
+          "title": "Global Brand Presence",
+          "description": "Expand your brand presence internationally with localized strategies.",
+          "details": "Our global brand presence service helps you reach an international audience while maintaining your brand consistency. We create multilingual and multicultural strategies that respect local specificities while maintaining your brand's global identity.",
+          "features": [
+            "Multilingual strategies",
+            "Content localization",
+            "Market-specific analysis",
+            "Regional account management",
+            "Geo-targeted campaigns"
+          ]
+        },
+        "advertising": {
+          "title": "Social Advertising",
+          "description": "Optimize your ROI with targeted, data-driven social ad campaigns.",
+          "details": "Our team of social advertising experts creates and optimizes campaigns that maximize return on investment. We use advanced targeting, engaging creatives, and continuous testing to ensure every dollar spent generates tangible results for your business.",
+          "features": [
+            "Custom advertising strategy",
+            "Demographic and behavioral targeting",
+            "High-impact creatives",
+            "Continuous campaign optimization",
+            "Detailed ROI analysis"
+          ]
+        },
+        "contentProduction": {
+          "title": "Content Production",
+          "description": "We produce high-quality visual and textual content optimized for each platform.",
+          "details": "Our content production service handles the creation of professional content for all social platforms. From copywriting to graphics, videos to animations, each element is specifically designed to maximize engagement on the target platform.",
+          "features": [
+            "Professional video production",
+            "Social graphic design",
+            "Strategic copywriting",
+            "Format-specific optimization",
+            "Interactive and immersive content"
+          ]
+        },
+        "influencerMarketing": {
+          "title": "Influencer Marketing",
+          "description": "Collaborate with strategically selected influencers to amplify your message.",
+          "details": "Our influencer marketing service identifies and manages collaborations with creators who perfectly align with your brand values. We develop authentic campaigns that leverage influencers' credibility to increase visibility and trust in your brand.",
+          "features": [
+            "Strategic influencer selection",
+            "Collaboration management",
+            "Creative brief development",
+            "Performance monitoring",
+            "Brand impact analysis"
+          ]
+        }
+      },
+      "detailsToggle": {
+        "show": "Show details",
+        "hide": "Hide details"
+      },
+      "chartTitle": "Performance Improvement",
+      "chartSubtitle": "Average results based on data from the last 6 months",
+      "cta": {
+        "quote": "Request Quote",
+        "learnMore": "Learn More"
+      }
+    },
+    "simulator": {
+      "title": "Engagement Simulator",
+      "subtitle": "Measure, analyze and optimize your social media performance",
+      "header": "AI Engagement Analyzer",
+      "startAnalysis": "Start analysis",
+      "platformSelection": "Select your platform",
+      "metricsSection": "Enter your metrics",
+      "metrics": {
+        "followers": "Followers",
+        "postsPerMonth": "Number of posts in the last month",
+        "avgLikes": "Average Likes per Post",
+        "avgComments": "Average Comments per Post",
+        "avgShares": "Average Shares per Post",
+        "avgSaves": "Average Saves per Post"
+      },
+      "advancedOptions": {
+        "show": "Show advanced options",
+        "hide": "Hide advanced options",
+        "importance": {
+          "title": "Why is it important?",
+          "description": "Shares and saves are high-quality engagement indicators. According to recent research, these signals carry more weight in {platform} algorithms and can significantly influence the organic visibility of your content."
+        }
+      },
+      "calculateButton": "Calculate Engagement Rate",
+      "calculating": "Analysis in progress...",
+      "resetButton": "Reset values",
+      "results": {
+        "title": "Analysis Result",
+        "benchmarkTitle": "{platform} benchmark comparison",
+        "quality": {
+          "veryLow": "Very low engagement rate",
+          "low": "Low engagement rate",
+          "average": "Average engagement rate",
+          "good": "Above average engagement rate",
+          "excellent": "Excellent engagement rate",
+          "default": "Engagement rate to be evaluated"
+        },
+        "advice": {
+          "veryLow": {
+            "general": "Your engagement rate is significantly below the industry average. It's time to completely revise your social strategy.",
+            "actions": [
+              "Analyze when your audience is most active and post during those times",
+              "Ask direct questions in your posts to stimulate interactions",
+              "Review your communication tone to make it more engaging",
+              "Consider using interactive content such as polls and quizzes"
+            ]
+          },
+          "low": {
+            "general": "Your engagement rate is below average. There's good room for improvement with some strategic adjustments.",
+            "actions": [
+              "Experiment with different content formats to see what resonates best",
+              "Increase the frequency of responses to follower comments",
+              "Use stronger call-to-actions in your posts",
+              "Implement a more targeted and relevant hashtag strategy"
+            ]
+          },
+          "average": {
+            "general": "Your engagement rate is in line with the industry average. You're doing a good job, but there's room for further improvements.",
+            "actions": [
+              "Identify your best-performing posts and create more similar content",
+              "Actively engage your most loyal followers through mentions and responses",
+              "Experiment with alternative posting times",
+              "Consider collaborations with other creators or brands"
+            ]
+          },
+          "good": {
+            "general": "Great job! Your engagement rate is above average. Your strategy is working well.",
+            "actions": [
+              "Thoroughly analyze your best-performing content to replicate its success",
+              "Consider increasing posting frequency while maintaining quality",
+              "Leverage UGC (User Generated Content) to diversify content",
+              "Implement regular A/B testing for further optimization"
+            ]
+          },
+          "excellent": {
+            "general": "Fantastic! Your engagement rate is among the best in the industry. Continue with this winning strategy.",
+            "actions": [
+              "Document your current strategy to maintain consistency",
+              "Consider creating premium or exclusive content for your audience",
+              "Explore monetization opportunities such as brand partnerships",
+              "Share some of your expertise by creating meta-content about your success"
+            ]
+          },
+          "default": {
+            "general": "We've calculated your engagement rate. Here are some general suggestions.",
+            "actions": [
+              "Regularly monitor your engagement metrics",
+              "Actively respond to follower comments",
+              "Experiment with different types of content",
+              "Post consistently"
+            ]
+          }
+        },
+        "platformSpecific": {
+          "instagram": "On Instagram, Reels get 22% more engagement than other formats. Integrate them into your strategy.",
+          "facebook": "On Facebook, video content gets 135% more organic reach than image-only posts.",
+          "tiktok": "On TikTok, using trending audio can increase engagement by up to 30%. Regularly monitor audio trends.",
+          "linkedin": "On LinkedIn, posts with original data and industry insights get 45% more engagement.",
+          "twitter": "On Twitter, tweets with video receive 10 times more engagement than those without media elements.",
+          "default": "Customize your strategy based on the unique characteristics of the platform."
+        },
+        "actionsTitle": "Recommended actions:",
+        "consultationButton": "Request personalized consultation",
+        "consultationSubtext": "Get a detailed analysis and custom strategy from our team"
+      }
+    },
+    "testimonials": {
+      "title": "Success Stories",
+      "subtitle": "Discover what our clients say",
+      "cta": "Read More Reviews"
+    },
+    "pricing": {
+      "title": "Investment Plans",
+      "subtitle": "Choose the right plan for your business",
+      "starterTitle": "Starter",
+      "starterPrice": "$99/month",
+      "proTitle": "Professional",
+      "proPrice": "$249/month",
+      "enterpriseTitle": "Enterprise",
+      "enterprisePrice": "Custom",
+      "cta": "Start Now",
+      "contactCta": "Contact Us for Details"
+    },
+    "blog": {
+      "title": "Latest Insights",
+      "subtitle": "Tips and trends in social media marketing",
+      "readMore": "Read More",
+      "viewAll": "View All Articles"
+    },
+    "caseStudies": {
+      "title": "Case Studies",
+      "subtitle": "Real results from our clients",
+      "resultsLabel": "Results Achieved",
+      "industryLabel": "Industry",
+      "platformLabel": "Platforms",
+      "timeframeLabel": "Timeframe",
+      "viewCta": "View Full Case Study" 
+    }
+  },
+  "footer": {
+    "contactUs": "Contact Us",
+    "followUs": "Follow Us",
+    "companyAddress": "123 Tech Avenue, Digital City",
+    "copyright": "© 2025 SocialPro. All rights reserved."
+  }
+} 

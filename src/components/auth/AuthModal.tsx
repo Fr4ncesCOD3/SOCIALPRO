@@ -5,7 +5,20 @@ import { X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FcGoogle } from 'react-icons/fc'
 
-const AuthModal = ({ isOpen, onClose, onLogin }: { isOpen: boolean, onClose: () => void, onLogin: () => void }) => {
+interface User {
+  id: string | number;
+  name: string;
+  email?: string;
+  [key: string]: any;
+}
+
+interface AuthModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onLogin: (user: User) => void;
+}
+
+const AuthModal = ({ isOpen, onClose, onLogin }: AuthModalProps) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -15,12 +28,42 @@ const AuthModal = ({ isOpen, onClose, onLogin }: { isOpen: boolean, onClose: () 
     e.preventDefault()
     setIsLoading(true)
     setError('')
-    // Implementa qui la logica di autenticazione
-    setIsLoading(false)
+    
+    try {
+      // Simula una chiamata API di autenticazione
+      setTimeout(() => {
+        // Simula un utente autenticato
+        const user: User = {
+          id: Math.random().toString(36).substring(2, 9),
+          name: email.split('@')[0],
+          email: email,
+          role: 'user'
+        };
+        
+        onLogin(user);
+        setIsLoading(false);
+      }, 1000);
+    } catch (err) {
+      setError('Errore durante l\'autenticazione');
+      setIsLoading(false);
+    }
   }
 
   const handleGoogleLogin = () => {
-    // Implementa qui la logica per l'autenticazione con Google
+    setIsLoading(true);
+    
+    // Simula l'autenticazione con Google
+    setTimeout(() => {
+      const user: User = {
+        id: Math.random().toString(36).substring(2, 9),
+        name: 'Google User',
+        email: 'user@gmail.com',
+        provider: 'google'
+      };
+      
+      onLogin(user);
+      setIsLoading(false);
+    }, 1000);
   }
 
   const modalVariants = {
