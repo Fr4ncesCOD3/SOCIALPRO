@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { LazyMotion, domAnimation } from 'framer-motion'
+import { Analytics } from '@vercel/analytics/react'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -143,6 +144,7 @@ const startApp = () => {
       <LazyMotion features={domAnimation} strict>
         <LanguageProvider>
           <App />
+          <Analytics />
         </LanguageProvider>
       </LazyMotion>
     </StrictMode>,
