@@ -66,6 +66,23 @@ const EngagementSimulator: React.FC = () => {
     twitter: { platform: 'twitter', poor: 0.3, average: 1, good: 3, excellent: 6 }
   }
 
+  // Nuovo stato per il rilevamento del dispositivo mobile
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Rileva se è un dispositivo mobile
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkIfMobile);
+    };
+  }, []);
+
   // Metodi per l'interazione e calcolo
   const handleInputChange = (field: keyof EngagementMetrics) => (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = Math.max(0, parseInt(e.target.value) || 0)
@@ -238,34 +255,34 @@ const EngagementSimulator: React.FC = () => {
   };
 
   return (
-    <section id="engagement-simulator" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-      <div className="container mx-auto px-6">
+    <section id="engagement-simulator" className="py-12 md:py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <div className="container mx-auto px-4 md:px-6">
         <motion.div
           className="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100"
           initial={false}
-          animate={isOpen ? { height: "auto" } : { height: "220px" }}
+          animate={isOpen ? { height: "auto" } : { height: isMobile ? "180px" : "220px" }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
         >
           {/* Header del simulatore */}
           <div 
-            className={`p-8 cursor-pointer relative ${isOpen ? 'border-b border-gray-100' : 'bg-white'}`}
+            className={`p-4 md:p-8 cursor-pointer relative ${isOpen ? 'border-b border-gray-100' : 'bg-white'}`}
             onClick={() => setIsOpen(!isOpen)}
           >
             <NeuralParticles isOpen={isOpen} />
             
             <motion.div 
-              className="flex items-center justify-center gap-3 mb-4 relative z-10"
+              className="flex items-center justify-center gap-2 md:gap-3 mb-3 md:mb-4 relative z-10"
               animate={{ scale: isOpen ? 1 : 1.05 }}
               transition={{ duration: 0.5, type: "spring" }}
             >
-              <BarChart className="h-8 w-8 text-blue-600" />
-              <h2 className="text-3xl font-bold text-center text-gray-800">
+              <BarChart className="h-6 w-6 md:h-8 md:w-8 text-blue-600" />
+              <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800">
                 {isOpen ? t('marketing.simulator.title') : t('marketing.simulator.header')}
-            </h2>
+              </h2>
             </motion.div>
             
             {!isOpen && (
-              <div className="text-center text-gray-600 mb-5 relative z-10">
+              <div className="text-center text-gray-600 mb-3 md:mb-5 text-sm md:text-base relative z-10">
                 {t('marketing.simulator.subtitle')}
               </div>
             )}
@@ -276,8 +293,8 @@ const EngagementSimulator: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <button className="bg-blue-600 text-white font-bold py-3 px-6 rounded-xl hover:bg-blue-700 transition-all duration-300 shadow-md flex items-center gap-2">
-                  <Zap className="h-5 w-5" />
+                <button className="bg-blue-600 text-white font-bold py-2 md:py-3 px-4 md:px-6 rounded-xl hover:bg-blue-700 transition-all duration-300 shadow-md flex items-center gap-2 text-sm md:text-base">
+                  <Zap className="h-4 w-4 md:h-5 md:w-5" />
                   {t('marketing.simulator.startAnalysis')}
                 </button>
               </motion.div>
@@ -286,28 +303,27 @@ const EngagementSimulator: React.FC = () => {
           
           {/* Corpo del simulatore (visibile solo quando aperto) */}
           {isOpen && (
-            <div className="p-8">
+            <div className="p-4 md:p-8">
               {/* Selezione piattaforma */}
-              <div className="mb-8">
-                <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                  <Globe className="h-5 w-5 text-blue-500" />
+              <div className="mb-6 md:mb-8">
+                <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-3 md:mb-4 flex items-center gap-2">
+                  <Globe className="h-4 w-4 md:h-5 md:w-5 text-blue-500" />
                   {t('marketing.simulator.platformSelection')}
                 </h3>
-                <div className="grid grid-cols-5 gap-3">
+                <div className="grid grid-cols-3 md:grid-cols-5 gap-2 md:gap-3">
                   {(["instagram", "facebook", "tiktok", "linkedin", "twitter"] as PlatformType[]).map((p) => (
                     <button
                       key={p}
-                      className={`flex flex-col items-center justify-center p-4 rounded-xl border 
+                      className={`flex flex-col items-center justify-center p-2 md:p-4 rounded-xl border 
                         ${platform === p ? 'border-blue-500 bg-blue-50 ring-2 ring-blue-200' : 'border-gray-200 hover:border-blue-300 bg-white'} 
                         transition-all duration-200`}
                       onClick={() => {setPlatform(p); setMetrics(prev => ({...prev, platform: p}))}}
+                      aria-label={p}
                     >
                       {p === 'instagram' && (
                         <svg
-                          className="w-10 h-10 mb-2 text-pink-600"
+                          className="w-7 h-7 md:w-10 md:h-10 mb-1 md:mb-2 text-pink-600"
                           xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
@@ -323,10 +339,8 @@ const EngagementSimulator: React.FC = () => {
                       
                       {p === 'facebook' && (
                         <svg
-                          className="w-10 h-10 mb-2 text-blue-600"
+                          className="w-7 h-7 md:w-10 md:h-10 mb-1 md:mb-2 text-blue-600"
                           xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
@@ -340,10 +354,8 @@ const EngagementSimulator: React.FC = () => {
                       
                       {p === 'tiktok' && (
                         <svg
-                          className="w-10 h-10 mb-2 text-black"
+                          className="w-7 h-7 md:w-10 md:h-10 mb-1 md:mb-2 text-black"
                           xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
@@ -361,10 +373,8 @@ const EngagementSimulator: React.FC = () => {
                       
                       {p === 'linkedin' && (
                         <svg
-                          className="w-10 h-10 mb-2 text-blue-700"
+                          className="w-7 h-7 md:w-10 md:h-10 mb-1 md:mb-2 text-blue-700"
                           xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
@@ -380,10 +390,8 @@ const EngagementSimulator: React.FC = () => {
                       
                       {p === 'twitter' && (
                         <svg
-                          className="w-10 h-10 mb-2 text-blue-400"
+                          className="w-7 h-7 md:w-10 md:h-10 mb-1 md:mb-2 text-blue-400"
                           xmlns="http://www.w3.org/2000/svg"
-                          width="24"
-                          height="24"
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
@@ -394,7 +402,7 @@ const EngagementSimulator: React.FC = () => {
                           <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
                         </svg>
                       )}
-                      <span className="text-sm font-medium capitalize">{p}</span>
+                      <span className="text-xs md:text-sm font-medium capitalize">{p}</span>
                     </button>
                   ))}
                 </div>
@@ -402,74 +410,78 @@ const EngagementSimulator: React.FC = () => {
               
               {/* Metriche principali */}
               <div className="mb-4">
-                <h3 className="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                  <BarChart className="h-5 w-5 text-blue-500" />
+                <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-3 md:mb-4 flex items-center gap-2">
+                  <BarChart className="h-4 w-4 md:h-5 md:w-5 text-blue-500" />
                   {t('marketing.simulator.metricsSection')}
                 </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                  <div className="rounded-xl border border-gray-200 p-5 bg-white">
-                    <div className="flex items-center gap-2 mb-4 text-gray-700">
-                      <Users className="h-5 w-5 text-blue-500" />
-                      <label className="block font-medium">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
+                  <div className="rounded-xl border border-gray-200 p-4 md:p-5 bg-white">
+                    <div className="flex items-center gap-2 mb-3 md:mb-4 text-gray-700">
+                      <Users className="h-4 w-4 md:h-5 md:w-5 text-blue-500" />
+                      <label className="block font-medium text-sm md:text-base">
                         {t('marketing.simulator.metrics.followers')}
                       </label>
                     </div>
                     <input
                       type="number"
+                      inputMode="numeric"
                       value={metrics.followers}
                       onChange={handleInputChange('followers')}
-                      className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all"
+                      className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all text-base"
                       min="1"
                       placeholder={t('marketing.simulator.metrics.followers')}
                     />
                   </div>
                   
-                  <div className="rounded-xl border border-gray-200 p-5 bg-white">
-                    <div className="flex items-center gap-2 mb-4 text-gray-700">
-                      <Layers className="h-5 w-5 text-blue-500" />
-                      <label className="block font-medium">
+                  <div className="rounded-xl border border-gray-200 p-4 md:p-5 bg-white">
+                    <div className="flex items-center gap-2 mb-3 md:mb-4 text-gray-700">
+                      <Layers className="h-4 w-4 md:h-5 md:w-5 text-blue-500" />
+                      <label className="block font-medium text-sm md:text-base">
                         {t('marketing.simulator.metrics.postsPerMonth')}
                       </label>
                     </div>
                     <input
                       type="number"
+                      inputMode="numeric"
                       value={metrics.posts}
                       onChange={handleInputChange('posts')}
-                      className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all"
+                      className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all text-base"
                       min="1"
                       placeholder={t('marketing.simulator.metrics.postsPerMonth')}
                     />
                   </div>
                   
-                  <div className="rounded-xl border border-gray-200 p-5 bg-white">
-                    <div className="flex items-center gap-2 mb-4 text-gray-700">
-                      <ThumbsUp className="h-5 w-5 text-blue-500" />
-                      <label className="block font-medium">
+                  <div className="rounded-xl border border-gray-200 p-4 md:p-5 bg-white">
+                    <div className="flex items-center gap-2 mb-3 md:mb-4 text-gray-700">
+                      <ThumbsUp className="h-4 w-4 md:h-5 md:w-5 text-blue-500" />
+                      <label className="block font-medium text-sm md:text-base">
                         {t('marketing.simulator.metrics.avgLikes')}
                       </label>
                     </div>
                     <input
                       type="number"
+                      inputMode="numeric"
                       value={metrics.avgLikes}
                       onChange={handleInputChange('avgLikes')}
-                      className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all"
+                      className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all text-base"
                       min="0"
                       placeholder={t('marketing.simulator.metrics.avgLikes')}
                     />
                   </div>
                   
-                  <div className="rounded-xl border border-gray-200 p-5 bg-white">
-                    <div className="flex items-center gap-2 mb-4 text-gray-700">
-                      <MessageSquare className="h-5 w-5 text-blue-500" />
-                      <label className="block font-medium">
+                  <div className="rounded-xl border border-gray-200 p-4 md:p-5 bg-white">
+                    <div className="flex items-center gap-2 mb-3 md:mb-4 text-gray-700">
+                      <MessageSquare className="h-4 w-4 md:h-5 md:w-5 text-blue-500" />
+                      <label className="block font-medium text-sm md:text-base">
                         {t('marketing.simulator.metrics.avgComments')}
-                    </label>
+                      </label>
                     </div>
                     <input
                       type="number"
+                      inputMode="numeric"
                       value={metrics.avgComments}
                       onChange={handleInputChange('avgComments')}
-                      className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all"
+                      className="block w-full rounded-lg border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition-all text-base"
                       min="0"
                       placeholder={t('marketing.simulator.metrics.avgComments')}
                     />
@@ -477,15 +489,16 @@ const EngagementSimulator: React.FC = () => {
                 </div>
               </div>
               
-              {/* Opzioni avanzate (espandibili) */}
-              <div className="mb-8">
+              {/* Opzioni avanzate (espandibili) con stile mobile-friendly */}
+              <div className="mb-6 md:mb-8">
                 <button 
                   onClick={() => setShowAdvancedOptions(!showAdvancedOptions)}
-                  className="flex items-center gap-2 text-blue-600 font-medium hover:text-blue-800 transition-colors"
+                  className="flex items-center gap-2 text-blue-600 font-medium hover:text-blue-800 transition-colors text-sm md:text-base"
+                  aria-expanded={showAdvancedOptions}
                 >
                   <span>{showAdvancedOptions ? t('marketing.simulator.advancedOptions.hide') : t('marketing.simulator.advancedOptions.show')}</span>
                   <svg 
-                    className={`w-5 h-5 transition-transform duration-300 ${showAdvancedOptions ? 'rotate-180' : ''}`} 
+                    className={`w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 ${showAdvancedOptions ? 'rotate-180' : ''}`} 
                     fill="none" 
                     viewBox="0 0 24 24" 
                     stroke="currentColor"
@@ -552,17 +565,17 @@ const EngagementSimulator: React.FC = () => {
               </div>
               
               {/* Pulsanti azione */}
-              <div className="flex flex-wrap gap-4 justify-center mb-6">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
                 <motion.button
                   onClick={calculateEngagement}
-                  className="bg-blue-600 text-white font-bold py-3 px-8 rounded-xl hover:bg-blue-700 transition-colors shadow-md flex items-center gap-2"
+                  className="w-full sm:w-auto bg-blue-600 text-white font-bold py-3 px-6 rounded-xl hover:bg-blue-700 transition-colors shadow-md flex items-center justify-center gap-2"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.98 }}
                   disabled={isCalculating}
                 >
                   {isCalculating ? (
                     <>
-                      <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <svg className="animate-spin h-4 w-4 md:h-5 md:w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                         <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
@@ -570,7 +583,7 @@ const EngagementSimulator: React.FC = () => {
                     </>
                   ) : (
                     <>
-                      <TrendingUp className="h-5 w-5" />
+                      <TrendingUp className="h-4 w-4 md:h-5 md:w-5" />
                       <span>{t('marketing.simulator.calculateButton')}</span>
                     </>
                   )}
@@ -578,13 +591,13 @@ const EngagementSimulator: React.FC = () => {
                 
                 <button
                   onClick={resetSimulator}
-                  className="border border-gray-300 bg-white text-gray-700 font-medium py-3 px-6 rounded-xl hover:bg-gray-50 transition-colors"
+                  className="w-full sm:w-auto border border-gray-300 bg-white text-gray-700 font-medium py-3 px-6 rounded-xl hover:bg-gray-50 transition-colors"
                 >
                   {t('marketing.simulator.resetButton')}
                 </button>
               </div>
               
-              {/* Risultati */}
+              {/* Risultati con miglioramenti per mobile */}
               <AnimatePresence>
                 {showResult && (
                   <motion.div
@@ -593,18 +606,18 @@ const EngagementSimulator: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.5 }}
-                    className="mt-10 bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-8 border border-blue-100"
+                    className="mt-8 md:mt-10 bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-4 md:p-8 border border-blue-100"
                   >
-                    <h3 className="text-2xl font-bold text-center text-gray-800 mb-6 flex items-center justify-center gap-2">
-                      <Award className="h-6 w-6 text-blue-600" />
+                    <h3 className="text-xl md:text-2xl font-bold text-center text-gray-800 mb-4 md:mb-6 flex items-center justify-center gap-2">
+                      <Award className="h-5 w-5 md:h-6 md:w-6 text-blue-600" />
                       {t('marketing.simulator.results.title')}
                     </h3>
                     
-                    {/* Indicatore percentuale */}
-                    <div className="flex justify-center mb-8">
+                    {/* Indicatore percentuale ridimensionato per mobile */}
+                    <div className="flex justify-center mb-6 md:mb-8">
                       <div className="relative">
                         <motion.div 
-                          className={`w-44 h-44 rounded-full flex items-center justify-center
+                          className={`w-32 h-32 md:w-44 md:h-44 rounded-full flex items-center justify-center
                             ${engagementQuality === 'veryLow' ? 'bg-red-100 text-red-800' : 
                               engagementQuality === 'low' ? 'bg-orange-100 text-orange-800' : 
                               engagementQuality === 'average' ? 'bg-green-100 text-green-800' : 
@@ -619,15 +632,15 @@ const EngagementSimulator: React.FC = () => {
                               initial={{ opacity: 0 }}
                               animate={{ opacity: 1 }}
                               transition={{ delay: 0.5 }}
-                              className="text-6xl font-bold"
-                    >
-                      {engagementRate}%
+                              className="text-4xl md:text-6xl font-bold"
+                            >
+                              {engagementRate}%
                             </motion.div>
-                            <div className="text-sm font-medium mt-1 capitalize">
+                            <div className="text-xs md:text-sm font-medium mt-1 capitalize">
                               {t(`marketing.simulator.results.quality.${engagementQuality}`)}
                             </div>
                           </div>
-                  </motion.div>
+                        </motion.div>
                         
                         <motion.div
                           className="absolute inset-0 rounded-full border-4 border-transparent"
@@ -652,25 +665,45 @@ const EngagementSimulator: React.FC = () => {
                       </div>
                     </div>
                     
-                    {/* Grafico benchmark */}
-                    <div className="mb-8">
-                      <h4 className="text-lg font-semibold text-gray-800 mb-3">
+                    {/* Grafico benchmark con altezza responsiva */}
+                    <div className="mb-6 md:mb-8">
+                      <h4 className="text-base md:text-lg font-semibold text-gray-800 mb-2 md:mb-3">
                         {t('marketing.simulator.results.benchmarkTitle').replace('{platform}', platform)}
                       </h4>
-                      <div className="bg-white p-4 rounded-xl border border-gray-200">
-                        <div className="h-64">
-                          <Bar data={getBenchmarkChartData()} options={chartOptions} />
+                      <div className="bg-white p-3 md:p-4 rounded-xl border border-gray-200">
+                        <div className="h-48 md:h-64">
+                          <Bar data={getBenchmarkChartData()} options={{
+                            ...chartOptions,
+                            maintainAspectRatio: false,
+                            responsive: true,
+                            plugins: {
+                              ...chartOptions.plugins,
+                              legend: {
+                                display: false
+                              }
+                            },
+                            scales: {
+                              ...chartOptions.scales,
+                              y: {
+                                ...chartOptions.scales.y,
+                                title: {
+                                  ...chartOptions.scales.y.title,
+                                  display: !isMobile,  // Nascondi titolo su mobile
+                                }
+                              }
+                            }
+                          }} />
                         </div>
                       </div>
-                </div>
+                    </div>
                     
-                    {/* Consigli per miglioramento */}
-                <div className="mt-8">
-                      <h4 className="text-xl font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                        <Zap className="h-5 w-5 text-blue-500" />
+                    {/* Consigli miglioramento con stile mobile-friendly */}
+                    <div className="mt-6 md:mt-8">
+                      <h4 className="text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-3 flex items-center gap-2">
+                        <Zap className="h-4 w-4 md:h-5 md:w-5 text-blue-500" />
                         {getAdvice().title}
                       </h4>
-                      <p className="text-gray-700 mb-5">{getAdvice().general}</p>
+                      <p className="text-sm md:text-base text-gray-700 mb-4 md:mb-5">{getAdvice().general}</p>
                       
                       <div className="bg-white rounded-xl border border-gray-200 p-5">
                         <h5 className="font-medium text-gray-800 mb-3">{t('marketing.simulator.results.actionsTitle')}</h5>
@@ -690,19 +723,19 @@ const EngagementSimulator: React.FC = () => {
                             <div className="text-gray-700">{getAdvice().platformTip}</div>
                           </li>
                         </ul>
-                </div>
-              </div>
+                      </div>
+                    </div>
                     
-                    {/* Pulsante per richiedere consulenza */}
-                    <div className="mt-10 text-center">
+                    {/* Pulsante consultazione adattato a mobile */}
+                    <div className="mt-8 md:mt-10 text-center">
                       <motion.button
                         whileHover={{ scale: 1.03 }}
                         whileTap={{ scale: 0.98 }}
-                        className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold py-3 px-8 rounded-xl shadow-lg transition-all hover:shadow-xl hover:from-blue-700 hover:to-indigo-700"
+                        className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all hover:shadow-xl hover:from-blue-700 hover:to-indigo-700"
                       >
                         {t('marketing.simulator.results.consultationButton')}
                       </motion.button>
-                      <p className="text-gray-500 text-sm mt-2">{t('marketing.simulator.results.consultationSubtext')}</p>
+                      <p className="text-xs md:text-sm text-gray-500 mt-2">{t('marketing.simulator.results.consultationSubtext')}</p>
                     </div>
                   </motion.div>
                 )}
