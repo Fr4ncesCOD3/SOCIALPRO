@@ -1,7 +1,5 @@
 # 🚀 SOCIALPRO
 
-![Banner SOCIALPRO](https://via.placeholder.com/1200x300/4F46E5/FFFFFF?text=SOCIALPRO)
-
 > **Piattaforma avanzata per la gestione e l'ottimizzazione del marketing sui social media**
 
 [![Version](https://img.shields.io/badge/versione-1.0.0-blue?style=for-the-badge)](https://github.com/username/socialpro/releases)
@@ -31,7 +29,7 @@
 
 **SOCIALPRO** è un'applicazione web moderna progettata per aiutare professionisti e aziende a gestire, analizzare e ottimizzare la loro presenza sui social media. Con una serie di strumenti interattivi e visualizzazioni dati intuitive, consente di massimizzare il ritorno sull'investimento delle attività di marketing digitale.
 
-![Screenshot Dashboard](https://via.placeholder.com/800x450/4F46E5/FFFFFF?text=SOCIALPRO+Dashboard)
+
 
 ## ✨ Funzionalità
 
@@ -81,29 +79,10 @@ cd socialpro
 
 # 3. Installa le dipendenze
 npm install
-```
 
-## 🚀 Utilizzo
-
-```bash
 # Avvia il server di sviluppo
 npm run dev
 
-
-# Esegui controllo tipi
-npm run typecheck
-
-# Esegui il linting del codice
-npm run lint
-
-# Formatta il codice
-npm run format
-
-# Compila per la produzione
-npm run build
-
-# Anteprima della build di produzione
-npm run preview
 ```
 
 ## 📊 Demo
@@ -153,6 +132,6 @@ Questo progetto è rilasciato sotto licenza MIT. Per maggiori dettagli, consulta
 
 <div align="center">
   
-© 2025 SOCIALPRO - FSdev • [Website](https://socialpro.example.com) • [Documentazione](https://docs.socialpro.example.com)
+© 2025 SOCIALPRO - FSdev • [Website](https://socialpro.example.com) • [Documentazione](https://github.com/Fr4ncesCOD3/SOCIALPRO)
 
 </div>
